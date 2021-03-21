@@ -1,0 +1,164 @@
+// css components
+.maintextbox {
+    h3 {
+        @include text(4rem, pb, normal, #000000, uppercase);
+        display: inline-flex;
+        align-items: center;
+        &:before {
+            content: "";
+            width: 80px;
+            height: 2px;
+            background: #000000;
+            display: inline-block;
+            margin-right: 20px;
+        }
+    }
+    p {
+        @include text(1.6rem, pr, 2.2rem, #000000, none);
+        margin: 10px 0 16px;
+        @include xs {
+            margin: 5px 0 10px;
+        }
+    }
+}
+.titletextbox {
+    h3 {
+        @include text(40px, pb, 50px, $primary-cl, uppercase);
+    }
+    p {
+        @include text(16px, pr, 22px, #ffffff, none);
+    }
+}
+//popup video
+.popupvideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+    // padding-bottom: 56.25%; /* 16:9 ratio */
+    // padding-top: 25px;
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+        transition: 0.5s;
+    }
+    .iframewrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        max-width: 600px;
+        max-height: 338px;
+        @include sm {
+            width: 85%;
+        }
+        @include transform(translate(-50%, -50%));
+        .close {
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            width: 30px;
+            height: 30px;
+            font-size: 1.9rem;
+            text-align: center;
+            background: #ffffff;
+            color: #000000;
+            border-radius: 50%;
+            cursor: pointer;
+            &:before {
+                content: "\2716";
+                @include mid;
+            }
+        }
+    }
+}
+.popupimg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s ease-in-out;
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+        transition: 0.5s ease-in-out;
+    }
+    &:before {
+        content: "\2716";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 3rem;
+        color: #ffffff;
+        cursor: pointer;
+        z-index: 200;
+    }
+    img {
+        margin: auto;
+        display: block;
+        width: 100%;
+        max-width: 640px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0.4;
+        transition: 0.2s ease-in-out;
+        @include sm {
+            width: 95%;
+            transform: translate(-50%, -50%);
+        }
+        &.scaleup {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            @include sm {
+                transform: translate(-50%, -50%);
+            }
+            transition: 0.2s ease-in-out;
+        }
+    }
+}
+.menumobile {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 60%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    transition: 0.5s cubic-bezier(0.48, 0.16, 0, 0.05);
+    z-index: 10;
+    &.active {
+        right: 0;
+        transition: 0.5s cubic-bezier(0, 0.98, 0.82, 0.99);
+    }
+    .menulist {
+        display: flex;
+        flex-direction: column;
+        padding: 75px 0 0 20px;
+        li {
+            & + li {
+                margin-top: 15px;
+            }
+            a {
+                height: 100%;
+                @include text(15px, pb, 22.5px, #ffffff, uppercase);
+                text-decoration: none;
+                &.active {
+                    color: #7d6d53;
+                }
+            }
+        }
+    }
+}

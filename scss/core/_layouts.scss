@@ -1,0 +1,122 @@
+@-ms-viewport {
+    width: device-width;
+}
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    scroll-behavior: smooth;
+}
+html {
+    --fontsize: 62.5%;
+    @media (max-width: 991px) {
+        --fontsize: 56.25%;
+    }
+    @media (max-width: 768px) {
+        --fontsize: 55%;
+    }
+    --pdspace: 90px;
+    @media (max-width: 991px) {
+        --pdspace: 60px;
+    }
+    @media (max-width: 767px) {
+        --pdspace: 30px;
+    }
+}
+html,
+body {
+    width: 100%;
+    max-width: $container-max-width;
+    margin: auto;
+    @include text(var(--fontsize), $font-main, $lh-text, $text-cl, none);
+    background: $white-cl;
+    behavior: smooth;
+    scroll-behavior: smooth;
+    position: relative;
+    // @include customscroll();
+    --pdaround: 30px;
+    .container {
+        width: 100%;
+        padding-left: var(--pdaround);
+        padding-right: var(--pdaround);
+        margin-right: auto;
+        margin-left: auto;
+        @media (max-width: 991px) {
+            --pdaround: 15px;
+        }
+    }
+    .container-fluid {
+        width: 100%;
+        padding-left: var(--pdaround);
+        padding-right: var(--pdaround);
+        margin-right: auto;
+        margin-left: auto;
+        @media (max-width: 991px) {
+            --pdaround: 15px;
+        }
+    }
+    .row {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .no-gap > .col,
+    .no-gap > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    @media (min-width: $xxs-min) {
+        .container {
+            max-width: 540px;
+        }
+    }
+    @media (min-width: $xs-min) {
+        .container {
+            max-width: 720px;
+        }
+    }
+    @media (min-width: $sm-min) {
+        .container {
+            max-width: 960px;
+        }
+    }
+    @media (min-width: $md-min) {
+        .container {
+            max-width: $container-width;
+        }
+    }
+
+    .mainwrapper {
+        width: 100%;
+        margin: auto;
+    }
+    @include lg {
+        // CSS responsive large desktop
+    }
+    @include md {
+        // CSS responsive desktop
+    }
+    @include sm {
+        // CSS responsive tablet
+    }
+    @include xs {
+        // CSS responsive mobile
+    }
+    @include xxs {
+        // CSS responsive small mobile
+    }
+}

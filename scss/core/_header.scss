@@ -1,0 +1,186 @@
+header {
+    --hdheight: 90px;
+    @media (max-width: 991px) {
+        --hdheight: 60px;
+    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--hdheight);
+    z-index: 100;
+    transition: 0.5s;
+    &.active {
+        background: #010101;
+        transition: 0.5s;
+    }
+    .container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        height: 100%;
+        position: relative;
+        .logo {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            a {
+                display: block;
+                img {
+                    @media (max-width: 991px) {
+                        width: 150px;
+                    }
+                    @media (max-width: 768px) {
+                        width: 115px;
+                    }
+                }
+            }
+        }
+        .menu {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include transform(translate(-50%, -50%));
+            li {
+                height: 100%;
+                a {
+                    @include mid(true);
+                    height: 100%;
+                    padding: 0 30px;
+                    @include text(15px, pb, 22.5px, #ffffff, uppercase);
+                    text-decoration: none;
+                    &.active {
+                        color: #7d6d53;
+                    }
+                }
+                &:hover {
+                    a {
+                        color: $primary-cl;
+                    }
+                }
+            }
+        }
+        .right {
+            height: 100%;
+            display: flex;
+            .lang {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                cursor: pointer;
+                position: relative;
+                &__current {
+                    font-size: 15px;
+                    font-family: pb;
+                    color: #ffffff;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    span {
+                        margin-right: 5px;
+                    }
+                    i {
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+                &__list {
+                    background: #ffffff;
+                    list-style-type: none;
+                    padding: 10px;
+                    position: absolute;
+                    top: 100%;
+                    right: 0;
+                    opacity: 0;
+                    cursor: pointer;
+                    pointer-events: none;
+                    @include transform(translateY(10px));
+                    transition: all 0.5s ease;
+                    li {
+                        padding: 2px 0;
+                        @include text(1.4rem, pr, normal, #010101, uppercase);
+                        &:hover {
+                            color: $primary-cl;
+                        }
+                    }
+                    &.active {
+                        opacity: 1;
+                        pointer-events: auto;
+                        @include transform(translateY(0));
+                        transition: all 0.5s ease;
+                    }
+                }
+            }
+            .menubuger {
+                cursor: pointer;
+                // height: 100%;
+                display: none;
+                align-items: center;
+                margin-left: 15px;
+                &__btn {
+                    position: relative;
+                    span:nth-child(1) {
+                        position: absolute;
+                        top: -10px;
+                        transition: all 0.5s;
+                        &.active {
+                            top: 0px;
+                            opacity: 1;
+                            @include transform(rotate(-45deg));
+                            transition: all 0.5s;
+                        }
+                    }
+                    span {
+                        display: block;
+                        width: 30px;
+                        height: 3px;
+                        background: #ffffff;
+                        opacity: 1;
+                        transition: all 0.5s;
+                        @include sm {
+                            width: 27px;
+                            height: 2px;
+                        }
+                        &.active {
+                            opacity: 0;
+                            @include transform(translateX(20px));
+                            transition: all 0.5s;
+                        }
+                    }
+                    span:nth-child(3) {
+                        position: absolute;
+                        top: 10px;
+                        transition: 0.5s;
+                        &.active {
+                            top: 0px;
+                            opacity: 1;
+                            @include transform(rotate(45deg));
+                            transition: all 0.5s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 991px) {
+    header {
+        .container-fluid {
+            .menu {
+                display: none;
+            }
+            .right {
+                .menubuger {
+                    display: flex;
+                }
+            }
+        }
+    }
+}
